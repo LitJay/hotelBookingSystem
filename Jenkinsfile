@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/sam011103/hotelBookingSystem.git'
+                git branch: 'main', url: 'https://github.com/LitJay/hotelBookingSystem.git'
             }
         }
         stage('Build') {
