@@ -10,6 +10,11 @@ plugins {
 }
 
 apply plugin: 'java'
+jar {
+    archiveBaseName = 'hotelBookingSystem-V1'
+    archiveVersion = '1.0'
+    destinationDir = file("$buildDir/libs")
+}
 apply plugin:'jacoco'
 jacoco {
     toolVersion = "0.8.7"
