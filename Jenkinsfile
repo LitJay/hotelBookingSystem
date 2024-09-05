@@ -19,7 +19,7 @@ pipeline {
                         
                         script {
                             try {
-                                bat 'gradle sonarqube'
+                                sh 'gradle sonarqube'
                             } catch (Exception e) {
                                 echo "SonarQube analysis failed or is not available. Skipping..."
                             }
@@ -28,9 +28,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {                
-                        bat 'docker build -t java-app .'
-                        bat 'docker run -d --name java-app-container java-app' 
-                        bat 'docker logs java-app-container > deployment.log'   
+                        sh 'docker build -t java-app .'
+                        sh 'docker run -d --name java-app-container java-app' 
+                        sh 'docker logs java-app-container > deployment.log'   
                  }           
         }
     
@@ -40,8 +40,8 @@ post {
         always {
             // Cleanup or other post-build steps
             echo 'Cleaning up...'
-            bat 'docker rm -f java-app-container || echo "No container to remove"'
-            bat 'docker rmi -f java-app || echo "No image to remove"' 
+            sh 'docker rm -f java-app-container || echo "No container to remove"'
+            sh 'docker rmi -f java-app || echo "No image to remove"' 
         }
         success {
             echo 'Build succeeded!!'
