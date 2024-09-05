@@ -5,8 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # 3. Copy JAR Files to the Container
-COPY build/libs/hotelBookingSystem-V1.jar /app/hotelBookingSystem-V1.jar
-
+COPY out/libs/hotelBookingSystem-V1.jar /app/hotelBookingSystem-V1.jar
 # 4. Copy Text Files to the Container
 COPY availablerooms.txt /app/availablerooms.txt
 COPY userinfo.txt /app/userinfo.txt
